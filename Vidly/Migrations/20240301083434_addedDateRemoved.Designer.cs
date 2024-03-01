@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vidly.Models;
 
@@ -11,9 +12,11 @@ using Vidly.Models;
 namespace Vidly.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240301083434_addedDateRemoved")]
+    partial class addedDateRemoved
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -307,14 +310,11 @@ namespace Vidly.Migrations
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateRemoved")
+                    b.Property<DateTime?>("DateRemoved")
                         .HasColumnType("datetime2");
 
                     b.Property<byte>("GenreId")
                         .HasColumnType("tinyint");
-
-                    b.Property<int>("MinuteLeft")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
